@@ -350,7 +350,21 @@
     <system>GitHub</system>
     <url>https://github.com/DozerMapper/dozer/issues</url>
   </issueManagement>
-
+<distributionManagement>
+      <repository>
+         <!-- Where to put released artifacts -->
+         <id>1stdibs-release</id>
+         <name>Nexus release artifact deployment repository</name>
+         <url>http://dibsnexus/nexus/content/repositories/releases</url>
+      </repository>
+      <snapshotRepository>
+         <!-- Where to put snapshot artifacts -->
+         <id>1stdibs-snapshot</id>
+         <name>Nexus snapshot artifact deployment repository</name>
+         <url>http://dibsnexus/nexus/content/repositories/snapshots</url>
+      </snapshotRepository>
+   </distributionManagement>
+<!--
   <distributionManagement>
     <site>
       <id>dozer.sf.net</id>
@@ -368,6 +382,7 @@
       <uniqueVersion>false</uniqueVersion>
     </snapshotRepository>
   </distributionManagement>
+-->
 
   <scm>
     <connection>scm:git:https//github.com/DozerMapper/dozer</connection>
