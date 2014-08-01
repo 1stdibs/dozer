@@ -1,5 +1,5 @@
-/**
- * Copyright 2005-2013 Dozer Project
+/*
+ * Copyright 2005-2010 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +33,7 @@ import java.lang.reflect.Method;
  */
 public class JavaBeanPropertyDescriptor extends GetterSetterPropertyDescriptor {
   private PropertyDescriptor pd;
+  private Method writeMethod;
 
   public JavaBeanPropertyDescriptor(Class<?> clazz, String fieldName, boolean isIndexed, int index,
       HintContainer srcDeepIndexHintContainer, HintContainer destDeepIndexHintContainer) {
@@ -41,12 +42,15 @@ public class JavaBeanPropertyDescriptor extends GetterSetterPropertyDescriptor {
 
   @Override
   public Method getWriteMethod() throws NoSuchMethodException {
-    Method result = getPropertyDescriptor(destDeepIndexHintContainer).getWriteMethod();
-    result = result == null ? ReflectionUtils.getNonVoidSetter(clazz, fieldName) : result;
-    if (result == null) {
-      throw new NoSuchMethodException("Unable to determine write method for Field: '" + fieldName + "' in Class: " + clazz);
+    // Store writeMethod internally as {@code PropertyDescriptor} stores it as {@code SoftReference}. This may be lost during GC.
+    if (writeMethod == null) {
+      writeMethod = getPropertyDescriptor(destDeepIndexHintContainer).getWriteMethod();
+      writeMethod = writeMethod == null ? ReflectionUtils.getNonVoidSetter(clazz, fieldName) : writeMethod;
+      if (writeMethod == null) {
+        throw new NoSuchMethodException("Unable to determine write method for Field: '" + fieldName + "' in Class: " + clazz);
+      }
     }
-    return result;
+    return writeMethod;
   }
 
   @Override
