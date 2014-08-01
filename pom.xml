@@ -20,7 +20,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>net.sf.dozer</groupId>
+  <groupId>com.dibs</groupId>
   <artifactId>dozer-parent</artifactId>
   <packaging>pom</packaging>
   <version>5.5.1-PDFIX</version>
