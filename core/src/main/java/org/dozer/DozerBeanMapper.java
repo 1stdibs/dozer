@@ -312,10 +312,7 @@ public class DozerBeanMapper implements Mapper {
   }
 
   private boolean isInitialized() {
-    if (ready.getCount() == 0) {
-    	return true;
-    }
-    return false;
+    return ready.getCount() == 0;
   }
 
   private void initMappings() {
