@@ -23,7 +23,7 @@
   <parent>
     <groupId>com.dibs</groupId>
     <artifactId>dozer-parent</artifactId>
-    <version>5.5.1-PDFIX</version>
+    <version>5.5.2-PDFIX</version>
   </parent>
 
   <artifactId>dozer</artifactId>
