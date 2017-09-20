@@ -145,20 +145,23 @@ public class DozerBeanMapper implements Mapper {
    * @see java.net.URL
    */
   public void setMappingFiles(List<String> mappingFileUrls) {
-    checkIfInitialized();
-    this.mappingFiles.clear();
-    this.mappingFiles.addAll(mappingFileUrls);
+	  if (!isInitialized()) {
+	    this.mappingFiles.clear();
+	    this.mappingFiles.addAll(mappingFileUrls);
+	  }
   }
 
   public void setFactories(Map<String, BeanFactory> factories) {
-    checkIfInitialized();
-    DestBeanCreator.setStoredFactories(factories);
+	  if (!isInitialized()) {
+		  DestBeanCreator.setStoredFactories(factories);
+	  }
   }
 
   public void setCustomConverters(List<CustomConverter> customConverters) {
-    checkIfInitialized();
-    this.customConverters.clear();
-    this.customConverters.addAll(customConverters);
+	  if (!isInitialized()) {
+		this.customConverters.clear();
+		this.customConverters.addAll(customConverters);
+	  }
   }
 
   public List<CustomConverter> getCustomConverters() {
@@ -242,10 +245,11 @@ public class DozerBeanMapper implements Mapper {
 	 * @param xmlStream Dozer mapping XML InputStream
 	 */
 	public void addMapping(InputStream xmlStream) {
-    checkIfInitialized();
-    MappingStreamReader fileReader = new MappingStreamReader(XMLParserFactory.getInstance());
-    MappingFileData mappingFileData = fileReader.read(xmlStream);
-    builderMappings.add(mappingFileData);
+		if (!isInitialized()) {
+		    MappingStreamReader fileReader = new MappingStreamReader(XMLParserFactory.getInstance());
+		    MappingFileData mappingFileData = fileReader.read(xmlStream);
+		    builderMappings.add(mappingFileData);
+		}
   }
 
   /**
@@ -254,9 +258,10 @@ public class DozerBeanMapper implements Mapper {
    * @param mappingBuilder mappings to be added
    */
   public void addMapping(BeanMappingBuilder mappingBuilder) {
-    checkIfInitialized();
-    MappingFileData mappingFileData = mappingBuilder.build();
-    builderMappings.add(mappingFileData);
+	  if (!isInitialized()) {
+	    MappingFileData mappingFileData = mappingBuilder.build();
+	    builderMappings.add(mappingFileData);
+	  }
   }
 
   public List<? extends DozerEventListener> getEventListeners() {
@@ -264,9 +269,10 @@ public class DozerBeanMapper implements Mapper {
   }
 
   public void setEventListeners(List<? extends DozerEventListener> eventListeners) {
-    checkIfInitialized();
-    this.eventListeners.clear();
-    this.eventListeners.addAll(eventListeners);
+	  if (!isInitialized()) {
+	    this.eventListeners.clear();
+	    this.eventListeners.addAll(eventListeners);
+	  }
   }
 
   public CustomFieldMapper getCustomFieldMapper() {
@@ -274,8 +280,9 @@ public class DozerBeanMapper implements Mapper {
   }
 
   public void setCustomFieldMapper(CustomFieldMapper customFieldMapper) {
-    checkIfInitialized();
-    this.customFieldMapper = customFieldMapper;
+	  if (!isInitialized()) {
+		  this.customFieldMapper = customFieldMapper;
+	  }
   }
 
   /**
@@ -298,15 +305,17 @@ public class DozerBeanMapper implements Mapper {
    * @param customConvertersWithId converter id to converter instance map
    */
   public void setCustomConvertersWithId(Map<String, CustomConverter> customConvertersWithId) {
-    checkIfInitialized();
-    this.customConvertersWithId.clear();
-    this.customConvertersWithId.putAll(customConvertersWithId);
+    if (!isInitialized()) {
+	    this.customConvertersWithId.clear();
+	    this.customConvertersWithId.putAll(customConvertersWithId);
+    }
   }
 
-  private void checkIfInitialized() {
+  private boolean isInitialized() {
     if (ready.getCount() == 0) {
-      throw new MappingException("Dozer Bean Mapper is already initialized! Modify settings before calling map()");
+    	return true;
     }
+    return false;
   }
 
   private void initMappings() {
