@@ -355,13 +355,13 @@
          <!-- Where to put released artifacts -->
          <id>1stdibs-release</id>
          <name>Nexus release artifact deployment repository</name>
-         <url>http://dibsnexus/nexus/content/repositories/releases</url>
+         <url>http://dibsnexus3.utils.1stdibs.com:8081/repository/releases</url>
       </repository>
       <snapshotRepository>
          <!-- Where to put snapshot artifacts -->
          <id>1stdibs-snapshot</id>
          <name>Nexus snapshot artifact deployment repository</name>
-         <url>http://dibsnexus/nexus/content/repositories/snapshots</url>
+         <url>http://dibsnexus3.utils.1stdibs.com:8081/repository/snapshots</url>
       </snapshotRepository>
    </distributionManagement>
 <!--
