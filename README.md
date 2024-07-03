@@ -1,3 +1,8 @@
+# Dibs Build Notes
+
+* built with: `mvn clean install -DskipTests -Dmaven.javadoc.skip=true`
+* [xmlBeans dependency must be built with Java 8](https://github.com/ethercis/openehr-java-libs/issues/1), so make sure you have some version of Java 8 installed
+
 <a href="http://dozer.sf.net"><img src="http://dozer.sourceforge.net/images/dozer.png" alt="Dozer" width="58" height="42"></a>
 
 [![Build Status](https://api.travis-ci.org/DozerMapper/dozer.png)](https://travis-ci.org/DozerMapper/dozer)

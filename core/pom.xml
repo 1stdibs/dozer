@@ -23,7 +23,7 @@
   <parent>
     <groupId>com.dibs</groupId>
     <artifactId>dozer-parent</artifactId>
-    <version>5.5.2-PDFIX</version>
+    <version>5.5.2-2</version>
   </parent>
 
   <artifactId>dozer</artifactId>
@@ -271,6 +271,7 @@
         <configuration>
           <schemaDirectory>src/test/xsd/xmlbeans</schemaDirectory>
           <sourceGenerationDirectory>target/xmlbeans-sources</sourceGenerationDirectory>
+          <javaSource>1.8</javaSource>
         </configuration>
       </plugin>
       <plugin>
