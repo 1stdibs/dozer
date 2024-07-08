@@ -127,7 +127,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>net.sf.dozer</groupId>
+      <groupId>com.dibs</groupId>
       <artifactId>dozer</artifactId>
       <version>${project.version}</version>
       <scope>provided</scope>
