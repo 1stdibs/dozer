@@ -22,9 +22,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>net.sf.dozer</groupId>
+    <groupId>com.dibs</groupId>
     <artifactId>dozer-parent</artifactId>
-    <version>5.5.1</version>
+    <version>5.5.2-PDFIX.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>dozer-osgi-test</artifactId>
