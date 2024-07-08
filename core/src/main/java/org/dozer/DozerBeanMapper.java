@@ -311,7 +311,7 @@ public class DozerBeanMapper implements Mapper {
     }
   }
 
-  private boolean isInitialized() {
+  public boolean isInitialized() {
     return ready.getCount() == 0;
   }
 

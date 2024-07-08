@@ -21,9 +21,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>net.sf.dozer</groupId>
+    <groupId>com.dibs</groupId>
     <artifactId>dozer-parent</artifactId>
-    <version>5.5.1</version>
+    <version>5.5.2-PDFIX.2</version>
   </parent>
 
   <artifactId>dozer-proto</artifactId>
@@ -36,7 +36,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>net.sf.dozer</groupId>
+      <groupId>com.dibs</groupId>
       <artifactId>dozer</artifactId>
       <version>${project.version}</version>
     </dependency>
